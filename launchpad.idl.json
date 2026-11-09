@@ -1,0 +1,5671 @@
+{
+  "address": "4CQamM8uVrGmQ8non8jEgq32topQK1cMyR2VDBf6rnLB",
+  "metadata": {
+    "name": "launchpad",
+    "version": "0.1.0",
+    "spec": "0.1.0"
+  },
+  "instructions": [
+    {
+      "name": "accept_admin",
+      "discriminator": [
+        112,
+        42,
+        45,
+        90,
+        116,
+        181,
+        13,
+        170
+      ],
+      "accounts": [
+        {
+          "name": "new_admin",
+          "signer": true
+        },
+        {
+          "name": "global",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "accept_distributor",
+      "discriminator": [
+        158,
+        82,
+        211,
+        174,
+        100,
+        151,
+        29,
+        230
+      ],
+      "accounts": [
+        {
+          "name": "new_distributor",
+          "signer": true
+        },
+        {
+          "name": "global",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "accept_payout_wallet",
+      "discriminator": [
+        83,
+        90,
+        222,
+        95,
+        171,
+        237,
+        75,
+        93
+      ],
+      "accounts": [
+        {
+          "name": "new_payout",
+          "signer": true
+        },
+        {
+          "name": "creator_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  114,
+                  101,
+                  97,
+                  116,
+                  111,
+                  114,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "creator_vault.mint",
+                "account": "CreatorVault"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "add_fee_tier",
+      "discriminator": [
+        36,
+        189,
+        210,
+        242,
+        23,
+        159,
+        223,
+        176
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_tier",
+          "writable": true
+        },
+        {
+          "name": "tier_admin",
+          "docs": [
+            "This level's LaunchLab platform admin."
+          ],
+          "writable": true
+        },
+        {
+          "name": "authority",
+          "docs": [
+            "Fee wallet and LP-NFT wallet of every level."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "platform_config",
+          "writable": true
+        },
+        {
+          "name": "cpmm_config"
+        },
+        {
+          "name": "launchlab_program",
+          "address": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "AddFeeTierArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "add_pair",
+      "discriminator": [
+        209,
+        230,
+        17,
+        236,
+        218,
+        162,
+        86,
+        118
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "launch_config"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "fund_raising",
+          "type": "u64"
+        },
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "attribute_fees",
+      "discriminator": [
+        69,
+        222,
+        170,
+        33,
+        20,
+        61,
+        132,
+        114
+      ],
+      "accounts": [
+        {
+          "name": "distributor",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "docs": [
+            "The SOL pair: every coin's fees are attributed in SOL."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  155,
+                  136,
+                  87,
+                  254,
+                  171,
+                  129,
+                  132,
+                  251,
+                  104,
+                  127,
+                  99,
+                  70,
+                  24,
+                  192,
+                  53,
+                  218,
+                  196,
+                  57,
+                  220,
+                  26,
+                  235,
+                  59,
+                  85,
+                  152,
+                  160,
+                  240,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "launch",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  97,
+                  117,
+                  110,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "launch.mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        },
+        {
+          "name": "creator_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  114,
+                  101,
+                  97,
+                  116,
+                  111,
+                  114,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "launch.mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "coin_fee",
+          "type": "u64"
+        },
+        {
+          "name": "source_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "claim_pair_fees",
+      "discriminator": [
+        14,
+        19,
+        238,
+        151,
+        212,
+        237,
+        23,
+        61
+      ],
+      "accounts": [
+        {
+          "name": "cranker",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_tier",
+          "docs": [
+            "The fee level whose platform vault is claimed; each level has its own vault per pair token."
+          ]
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_vault_authority"
+        },
+        {
+          "name": "platform_config",
+          "relations": [
+            "fee_tier"
+          ]
+        },
+        {
+          "name": "platform_fee_vault",
+          "writable": true
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "launchlab_program",
+          "address": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "collect_lp_fees",
+      "discriminator": [
+        8,
+        174,
+        201,
+        78,
+        141,
+        117,
+        163,
+        33
+      ],
+      "accounts": [
+        {
+          "name": "cranker",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_tier",
+          "docs": [
+            "The coin's fee level: its CPMM config fixes the graduated pool's address (checked against the lock below)."
+          ]
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "launch.quote_mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        },
+        {
+          "name": "launch",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  97,
+                  117,
+                  110,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "launch.mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        },
+        {
+          "name": "creator_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  114,
+                  101,
+                  97,
+                  116,
+                  111,
+                  114,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "launch.mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "coin_mint",
+          "writable": true
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true
+        },
+        {
+          "name": "authority_coin_ata",
+          "writable": true
+        },
+        {
+          "name": "fee_nft_mint"
+        },
+        {
+          "name": "fee_nft_account"
+        },
+        {
+          "name": "locked_liquidity",
+          "writable": true
+        },
+        {
+          "name": "lock_authority"
+        },
+        {
+          "name": "locked_lp_vault",
+          "writable": true
+        },
+        {
+          "name": "cpmm_authority"
+        },
+        {
+          "name": "cpmm_pool",
+          "writable": true
+        },
+        {
+          "name": "lp_mint",
+          "writable": true
+        },
+        {
+          "name": "token0_vault",
+          "writable": true
+        },
+        {
+          "name": "token1_vault",
+          "writable": true
+        },
+        {
+          "name": "quote_token_program"
+        },
+        {
+          "name": "coin_token_program",
+          "docs": [
+            "The coin's token program (always SPL Token)."
+          ],
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "fee_nft_token_program"
+        },
+        {
+          "name": "token_program_2022",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        },
+        {
+          "name": "memo_program",
+          "address": "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"
+        },
+        {
+          "name": "cpmm_program",
+          "address": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C"
+        },
+        {
+          "name": "lock_program",
+          "address": "LockrWmn6K5twhz3y9w1dQERbmgSaRkfnTeTKbpofwE"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "convert_begin",
+      "discriminator": [
+        239,
+        213,
+        223,
+        23,
+        143,
+        152,
+        248,
+        251
+      ],
+      "accounts": [
+        {
+          "name": "distributor",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "docs": [
+            "A pair other than SOL (SOL needs no converting)."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ticket",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  118,
+                  101,
+                  114,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "quote_token_program"
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "dev_quote_ata",
+          "writable": true
+        },
+        {
+          "name": "dev_wsol_ata",
+          "writable": true
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "native_mint",
+          "address": "So11111111111111111111111111111111111111112"
+        },
+        {
+          "name": "quote_token_program"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "instructions",
+          "address": "Sysvar1nstructions1111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "convert_end",
+      "discriminator": [
+        9,
+        248,
+        237,
+        155,
+        243,
+        39,
+        59,
+        254
+      ],
+      "accounts": [
+        {
+          "name": "distributor",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ]
+          },
+          "relations": [
+            "ticket"
+          ]
+        },
+        {
+          "name": "sol_pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  155,
+                  136,
+                  87,
+                  254,
+                  171,
+                  129,
+                  132,
+                  251,
+                  104,
+                  127,
+                  99,
+                  70,
+                  24,
+                  192,
+                  53,
+                  218,
+                  196,
+                  57,
+                  220,
+                  26,
+                  235,
+                  59,
+                  85,
+                  152,
+                  160,
+                  240,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "ticket",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  118,
+                  101,
+                  114,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "quote_token_program"
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "authority_wsol_ata",
+          "writable": true
+        },
+        {
+          "name": "dev_quote_ata",
+          "writable": true
+        },
+        {
+          "name": "dev_wsol_ata",
+          "writable": true
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "native_mint",
+          "address": "So11111111111111111111111111111111111111112"
+        },
+        {
+          "name": "quote_token_program"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "instructions",
+          "address": "Sysvar1nstructions1111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "min_out",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "init_global",
+      "discriminator": [
+        44,
+        238,
+        77,
+        253,
+        76,
+        182,
+        192,
+        162
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "docs": [
+            "Must be the program's upgrade authority, so nobody can take the program over between deploy and setup."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "program_data",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  47,
+                  127,
+                  29,
+                  53,
+                  152,
+                  201,
+                  21,
+                  70,
+                  71,
+                  23,
+                  109,
+                  15,
+                  8,
+                  243,
+                  91,
+                  99,
+                  75,
+                  101,
+                  100,
+                  52,
+                  164,
+                  156,
+                  204,
+                  139,
+                  29,
+                  152,
+                  71,
+                  45,
+                  183,
+                  189,
+                  94,
+                  228
+                ]
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                2,
+                168,
+                246,
+                145,
+                78,
+                136,
+                161,
+                176,
+                226,
+                16,
+                21,
+                62,
+                247,
+                99,
+                174,
+                43,
+                0,
+                194,
+                185,
+                61,
+                22,
+                193,
+                36,
+                210,
+                192,
+                83,
+                122,
+                16,
+                4,
+                128,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        {
+          "name": "global",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "docs": [
+            "Our LaunchLab platform and the holder of all our fees."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "InitGlobalArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "launch",
+      "discriminator": [
+        153,
+        241,
+        93,
+        225,
+        22,
+        69,
+        74,
+        61
+      ],
+      "accounts": [
+        {
+          "name": "creator",
+          "docs": [
+            "The creator pays and is paid; their payout wallet can be changed later."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "attestor",
+          "docs": [
+            "Backend key that ran the off-chain checks. Required when `global.attestor_required`."
+          ],
+          "signer": true,
+          "optional": true
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_tier",
+          "docs": [
+            "The trading-fee level the creator picked; the coin trades on its platform for life."
+          ]
+        },
+        {
+          "name": "pair",
+          "docs": [
+            "The token this coin is paired with."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "x_record",
+          "writable": true,
+          "optional": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  120
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "args.x_handle_hash"
+              }
+            ]
+          }
+        },
+        {
+          "name": "launch",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  97,
+                  117,
+                  110,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "base_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "creator_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  114,
+                  101,
+                  97,
+                  116,
+                  111,
+                  114,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "base_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "launch_config",
+          "relations": [
+            "pair"
+          ]
+        },
+        {
+          "name": "platform_config",
+          "relations": [
+            "fee_tier"
+          ]
+        },
+        {
+          "name": "launchlab_authority"
+        },
+        {
+          "name": "pool_state",
+          "writable": true
+        },
+        {
+          "name": "base_mint",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "base_vault",
+          "writable": true
+        },
+        {
+          "name": "quote_vault",
+          "writable": true
+        },
+        {
+          "name": "metadata_account",
+          "writable": true
+        },
+        {
+          "name": "base_token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "quote_token_program"
+        },
+        {
+          "name": "metadata_program",
+          "address": "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        },
+        {
+          "name": "launchlab_event_authority"
+        },
+        {
+          "name": "launchlab_program",
+          "address": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "LaunchArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "pay_creator",
+      "discriminator": [
+        243,
+        54,
+        64,
+        68,
+        128,
+        10,
+        179,
+        221
+      ],
+      "accounts": [
+        {
+          "name": "distributor",
+          "docs": [
+            "Pays the transaction and, if needed, the payout wallet's token account."
+          ],
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "creator_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  114,
+                  101,
+                  97,
+                  116,
+                  111,
+                  114,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "creator_vault.mint",
+                "account": "CreatorVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "payout"
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "destination",
+          "writable": true
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "pay_holders",
+      "discriminator": [
+        250,
+        56,
+        66,
+        44,
+        189,
+        176,
+        46,
+        155
+      ],
+      "accounts": [
+        {
+          "name": "pay",
+          "accounts": [
+            {
+              "name": "distributor",
+              "signer": true,
+              "relations": [
+                "global"
+              ]
+            },
+            {
+              "name": "global",
+              "pda": {
+                "seeds": [
+                  {
+                    "kind": "const",
+                    "value": [
+                      103,
+                      108,
+                      111,
+                      98,
+                      97,
+                      108
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "authority",
+              "pda": {
+                "seeds": [
+                  {
+                    "kind": "const",
+                    "value": [
+                      97,
+                      117,
+                      116,
+                      104,
+                      111,
+                      114,
+                      105,
+                      116,
+                      121
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "authority_quote_ata",
+              "writable": true,
+              "pda": {
+                "seeds": [
+                  {
+                    "kind": "account",
+                    "path": "authority"
+                  },
+                  {
+                    "kind": "account",
+                    "path": "token_program"
+                  },
+                  {
+                    "kind": "account",
+                    "path": "quote_mint"
+                  }
+                ],
+                "program": {
+                  "kind": "const",
+                  "value": [
+                    140,
+                    151,
+                    37,
+                    143,
+                    78,
+                    36,
+                    137,
+                    241,
+                    187,
+                    61,
+                    16,
+                    41,
+                    20,
+                    142,
+                    13,
+                    131,
+                    11,
+                    90,
+                    19,
+                    153,
+                    218,
+                    255,
+                    16,
+                    132,
+                    4,
+                    142,
+                    123,
+                    216,
+                    219,
+                    233,
+                    248,
+                    89
+                  ]
+                }
+              }
+            },
+            {
+              "name": "destination",
+              "writable": true
+            },
+            {
+              "name": "quote_mint"
+            },
+            {
+              "name": "token_program"
+            }
+          ]
+        },
+        {
+          "name": "launch",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  97,
+                  117,
+                  110,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "launch.mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "docs": [
+            "The coin's pair, whose outflow limit the payout counts against."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pay.quote_mint",
+                "account": "PayAccounts"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "pay_traders",
+      "discriminator": [
+        215,
+        35,
+        57,
+        76,
+        17,
+        251,
+        120,
+        134
+      ],
+      "accounts": [
+        {
+          "name": "pay",
+          "accounts": [
+            {
+              "name": "distributor",
+              "signer": true,
+              "relations": [
+                "global"
+              ]
+            },
+            {
+              "name": "global",
+              "pda": {
+                "seeds": [
+                  {
+                    "kind": "const",
+                    "value": [
+                      103,
+                      108,
+                      111,
+                      98,
+                      97,
+                      108
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "authority",
+              "pda": {
+                "seeds": [
+                  {
+                    "kind": "const",
+                    "value": [
+                      97,
+                      117,
+                      116,
+                      104,
+                      111,
+                      114,
+                      105,
+                      116,
+                      121
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "authority_quote_ata",
+              "writable": true,
+              "pda": {
+                "seeds": [
+                  {
+                    "kind": "account",
+                    "path": "authority"
+                  },
+                  {
+                    "kind": "account",
+                    "path": "token_program"
+                  },
+                  {
+                    "kind": "account",
+                    "path": "quote_mint"
+                  }
+                ],
+                "program": {
+                  "kind": "const",
+                  "value": [
+                    140,
+                    151,
+                    37,
+                    143,
+                    78,
+                    36,
+                    137,
+                    241,
+                    187,
+                    61,
+                    16,
+                    41,
+                    20,
+                    142,
+                    13,
+                    131,
+                    11,
+                    90,
+                    19,
+                    153,
+                    218,
+                    255,
+                    16,
+                    132,
+                    4,
+                    142,
+                    123,
+                    216,
+                    219,
+                    233,
+                    248,
+                    89
+                  ]
+                }
+              }
+            },
+            {
+              "name": "destination",
+              "writable": true
+            },
+            {
+              "name": "quote_mint"
+            },
+            {
+              "name": "token_program"
+            }
+          ]
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pay.quote_mint",
+                "account": "PayAccounts"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "propose_admin",
+      "discriminator": [
+        121,
+        214,
+        199,
+        212,
+        87,
+        39,
+        117,
+        234
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "new_admin",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "propose_distributor",
+      "discriminator": [
+        168,
+        230,
+        249,
+        46,
+        45,
+        26,
+        228,
+        236
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "new_distributor",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "release_flagship",
+      "discriminator": [
+        182,
+        226,
+        244,
+        75,
+        58,
+        152,
+        120,
+        156
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pair.quote_mint",
+                "account": "Pair"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "release_pending",
+      "discriminator": [
+        24,
+        226,
+        163,
+        4,
+        150,
+        253,
+        20,
+        170
+      ],
+      "accounts": [
+        {
+          "name": "distributor",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pair.quote_mint",
+                "account": "Pair"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "set_fee_tier",
+      "discriminator": [
+        128,
+        172,
+        128,
+        22,
+        246,
+        79,
+        7,
+        219
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_tier",
+          "writable": true
+        },
+        {
+          "name": "tier_admin"
+        },
+        {
+          "name": "platform_config",
+          "writable": true,
+          "relations": [
+            "fee_tier"
+          ]
+        },
+        {
+          "name": "launchlab_program",
+          "address": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj"
+        }
+      ],
+      "args": [
+        {
+          "name": "fee_rate",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "enabled",
+          "type": {
+            "option": "bool"
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_flagship",
+      "discriminator": [
+        155,
+        11,
+        59,
+        70,
+        67,
+        174,
+        1,
+        110
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "flagship_launch",
+          "docs": [
+            "The coin's launch record: it must have been launched through us."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  97,
+                  117,
+                  110,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "flagship_launch.mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "set_outflow_limit",
+      "discriminator": [
+        228,
+        89,
+        251,
+        114,
+        101,
+        140,
+        200,
+        123
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pair.quote_mint",
+                "account": "Pair"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "cap",
+          "type": "u64"
+        },
+        {
+          "name": "window_secs",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "set_pair",
+      "discriminator": [
+        42,
+        150,
+        180,
+        126,
+        54,
+        219,
+        46,
+        191
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pair.quote_mint",
+                "account": "Pair"
+              }
+            ]
+          }
+        },
+        {
+          "name": "launch_config",
+          "relations": [
+            "pair"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "fund_raising",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "enabled",
+          "type": {
+            "option": "bool"
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_payout_wallet",
+      "discriminator": [
+        176,
+        232,
+        79,
+        49,
+        104,
+        143,
+        62,
+        49
+      ],
+      "accounts": [
+        {
+          "name": "payout",
+          "signer": true
+        },
+        {
+          "name": "creator_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  114,
+                  101,
+                  97,
+                  116,
+                  111,
+                  114,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "creator_vault.mint",
+                "account": "CreatorVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "global",
+          "docs": [
+            "For the treasury, which takes over without accepting."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "new_payout",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "spend_flagship",
+      "discriminator": [
+        247,
+        141,
+        142,
+        129,
+        15,
+        25,
+        193,
+        56
+      ],
+      "accounts": [
+        {
+          "name": "distributor",
+          "docs": [
+            "The developer wallet: the distributor and the flagship's creator. It buys with its own token accounts",
+            "and burns what it bought, and pays for the transaction and any account rent."
+          ],
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_tier",
+          "docs": [
+            "The flagship's fee level: its platform must be ours (LaunchLab checks it's the pool's)."
+          ]
+        },
+        {
+          "name": "pair",
+          "docs": [
+            "The flagship's own pair: its curve trades against this token."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "flagship_launch.quote_mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        },
+        {
+          "name": "flagship_launch",
+          "docs": [
+            "The flagship's launch record: the distributor must be the wallet that launched it."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  97,
+                  117,
+                  110,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "flagship_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "flagship_mint",
+          "writable": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "dev_quote_ata",
+          "writable": true
+        },
+        {
+          "name": "dev_flagship_ata",
+          "writable": true
+        },
+        {
+          "name": "launch_config",
+          "relations": [
+            "pair"
+          ]
+        },
+        {
+          "name": "platform_config",
+          "relations": [
+            "fee_tier"
+          ]
+        },
+        {
+          "name": "launchlab_authority"
+        },
+        {
+          "name": "pool_state",
+          "writable": true
+        },
+        {
+          "name": "base_vault",
+          "writable": true
+        },
+        {
+          "name": "quote_vault",
+          "writable": true
+        },
+        {
+          "name": "platform_fee_vault",
+          "writable": true
+        },
+        {
+          "name": "creator_fee_vault",
+          "writable": true
+        },
+        {
+          "name": "base_token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "launchlab_event_authority"
+        },
+        {
+          "name": "launchlab_program",
+          "address": "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "min_out",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "spend_flagship_cpmm",
+      "discriminator": [
+        186,
+        236,
+        185,
+        171,
+        89,
+        251,
+        12,
+        134
+      ],
+      "accounts": [
+        {
+          "name": "distributor",
+          "docs": [
+            "The developer wallet, as in `SpendFlagship`."
+          ],
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "fee_tier",
+          "docs": [
+            "The flagship's fee level (checked against its curve below): its CPMM config fixes the graduated pool's",
+            "address."
+          ]
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "flagship_launch.quote_mint",
+                "account": "LaunchRecord"
+              }
+            ]
+          }
+        },
+        {
+          "name": "flagship_launch",
+          "docs": [
+            "The flagship's launch record: the distributor must be the wallet that launched it."
+          ],
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  108,
+                  97,
+                  117,
+                  110,
+                  99,
+                  104
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "flagship_mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "pool_state",
+          "docs": [
+            "The flagship's LaunchLab curve. It must have migrated, and `fee_tier` must be the level it launched on,",
+            "so the pool derived below is the one LaunchLab graduated it into. Anyone can open a CPMM pool for the",
+            "same two tokens on another level's config (or on this one before migration), at any price, and a buy",
+            "there would hand the flagship pool to whoever holds that pool's liquidity."
+          ]
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "flagship_mint",
+          "writable": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "dev_quote_ata",
+          "writable": true
+        },
+        {
+          "name": "dev_flagship_ata",
+          "writable": true
+        },
+        {
+          "name": "cpmm_authority"
+        },
+        {
+          "name": "amm_config"
+        },
+        {
+          "name": "cpmm_pool",
+          "writable": true
+        },
+        {
+          "name": "quote_vault",
+          "writable": true
+        },
+        {
+          "name": "flagship_vault",
+          "writable": true
+        },
+        {
+          "name": "observation",
+          "writable": true
+        },
+        {
+          "name": "base_token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "cpmm_program",
+          "address": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "min_out",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "update_global",
+      "discriminator": [
+        90,
+        152,
+        240,
+        21,
+        199,
+        38,
+        72,
+        20
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "UpdateGlobalArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "withdraw_creator_fees",
+      "discriminator": [
+        8,
+        30,
+        213,
+        18,
+        121,
+        105,
+        129,
+        222
+      ],
+      "accounts": [
+        {
+          "name": "payout",
+          "signer": true
+        },
+        {
+          "name": "creator_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  114,
+                  101,
+                  97,
+                  116,
+                  111,
+                  114,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "creator_vault.mint",
+                "account": "CreatorVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "destination",
+          "docs": [
+            "Any account for the pair token the payout wallet picks."
+          ],
+          "writable": true
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdraw_treasury",
+      "discriminator": [
+        40,
+        63,
+        122,
+        158,
+        144,
+        216,
+        83,
+        96
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "global",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pair",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  105,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pair.quote_mint",
+                "account": "Pair"
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury",
+          "relations": [
+            "global"
+          ]
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority_quote_ata",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "destination",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "treasury"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "quote_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "quote_mint"
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ConvertTicket",
+      "discriminator": [
+        206,
+        25,
+        182,
+        159,
+        189,
+        104,
+        185,
+        167
+      ]
+    },
+    {
+      "name": "CreatorVault",
+      "discriminator": [
+        200,
+        135,
+        38,
+        98,
+        35,
+        236,
+        238,
+        12
+      ]
+    },
+    {
+      "name": "FeeTier",
+      "discriminator": [
+        56,
+        75,
+        159,
+        76,
+        142,
+        68,
+        190,
+        105
+      ]
+    },
+    {
+      "name": "Global",
+      "discriminator": [
+        167,
+        232,
+        232,
+        177,
+        200,
+        108,
+        114,
+        127
+      ]
+    },
+    {
+      "name": "LaunchRecord",
+      "discriminator": [
+        146,
+        240,
+        197,
+        204,
+        6,
+        6,
+        87,
+        75
+      ]
+    },
+    {
+      "name": "Pair",
+      "discriminator": [
+        85,
+        72,
+        49,
+        176,
+        182,
+        228,
+        141,
+        82
+      ]
+    },
+    {
+      "name": "XRecord",
+      "discriminator": [
+        130,
+        216,
+        7,
+        195,
+        214,
+        119,
+        149,
+        192
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "CreatorFeesWithdrawn",
+      "discriminator": [
+        142,
+        52,
+        192,
+        191,
+        6,
+        90,
+        253,
+        62
+      ]
+    },
+    {
+      "name": "CreatorPaid",
+      "discriminator": [
+        110,
+        132,
+        111,
+        208,
+        170,
+        45,
+        93,
+        98
+      ]
+    },
+    {
+      "name": "DistributorChanged",
+      "discriminator": [
+        222,
+        190,
+        136,
+        148,
+        226,
+        248,
+        19,
+        166
+      ]
+    },
+    {
+      "name": "DistributorProposed",
+      "discriminator": [
+        141,
+        83,
+        90,
+        53,
+        70,
+        22,
+        71,
+        243
+      ]
+    },
+    {
+      "name": "FeesAttributed",
+      "discriminator": [
+        239,
+        47,
+        86,
+        90,
+        244,
+        94,
+        76,
+        165
+      ]
+    },
+    {
+      "name": "FeesCollected",
+      "discriminator": [
+        233,
+        23,
+        117,
+        225,
+        107,
+        178,
+        254,
+        8
+      ]
+    },
+    {
+      "name": "FeesConverted",
+      "discriminator": [
+        21,
+        57,
+        76,
+        175,
+        87,
+        94,
+        152,
+        253
+      ]
+    },
+    {
+      "name": "FlagshipBought",
+      "discriminator": [
+        2,
+        130,
+        188,
+        227,
+        224,
+        44,
+        83,
+        182
+      ]
+    },
+    {
+      "name": "FlagshipReleased",
+      "discriminator": [
+        168,
+        73,
+        126,
+        219,
+        240,
+        140,
+        111,
+        233
+      ]
+    },
+    {
+      "name": "FlagshipSet",
+      "discriminator": [
+        165,
+        67,
+        220,
+        38,
+        152,
+        30,
+        20,
+        116
+      ]
+    },
+    {
+      "name": "GlobalUpdated",
+      "discriminator": [
+        131,
+        66,
+        237,
+        209,
+        176,
+        87,
+        119,
+        203
+      ]
+    },
+    {
+      "name": "HolderRewardPaid",
+      "discriminator": [
+        140,
+        62,
+        181,
+        163,
+        18,
+        170,
+        221,
+        7
+      ]
+    },
+    {
+      "name": "Launched",
+      "discriminator": [
+        209,
+        127,
+        29,
+        152,
+        129,
+        212,
+        189,
+        183
+      ]
+    },
+    {
+      "name": "LpTokensBurned",
+      "discriminator": [
+        204,
+        43,
+        106,
+        124,
+        185,
+        153,
+        93,
+        47
+      ]
+    },
+    {
+      "name": "OutflowLimitSet",
+      "discriminator": [
+        178,
+        93,
+        37,
+        72,
+        229,
+        108,
+        38,
+        142
+      ]
+    },
+    {
+      "name": "PayoutWalletChanged",
+      "discriminator": [
+        128,
+        67,
+        16,
+        134,
+        127,
+        37,
+        48,
+        207
+      ]
+    },
+    {
+      "name": "PayoutWalletProposed",
+      "discriminator": [
+        228,
+        104,
+        185,
+        143,
+        230,
+        178,
+        130,
+        136
+      ]
+    },
+    {
+      "name": "PendingReleased",
+      "discriminator": [
+        26,
+        50,
+        6,
+        8,
+        8,
+        0,
+        25,
+        97
+      ]
+    },
+    {
+      "name": "TraderRewardPaid",
+      "discriminator": [
+        80,
+        154,
+        41,
+        92,
+        174,
+        194,
+        126,
+        62
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Paused",
+      "msg": "Launches are paused"
+    },
+    {
+      "code": 6001,
+      "name": "MissingAttestor",
+      "msg": "Launch must be co-signed by the attestor"
+    },
+    {
+      "code": 6002,
+      "name": "NotPendingAdmin",
+      "msg": "Only the pending admin can accept"
+    },
+    {
+      "code": 6003,
+      "name": "MissingXRecord",
+      "msg": "X record account is required when an X handle hash is given"
+    },
+    {
+      "code": 6004,
+      "name": "NothingToWithdraw",
+      "msg": "Nothing to withdraw"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidTokenAccount",
+      "msg": "Token account is not the expected associated token account"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidSplit",
+      "msg": "The fee split must add up to 100%"
+    },
+    {
+      "code": 6007,
+      "name": "InsufficientTreasury",
+      "msg": "Amount exceeds the treasury balance"
+    },
+    {
+      "code": 6008,
+      "name": "PairDisabled",
+      "msg": "Launches paired with this token are switched off"
+    },
+    {
+      "code": 6009,
+      "name": "InvalidLaunchConfig",
+      "msg": "Not LaunchLab's global config for this token"
+    },
+    {
+      "code": 6010,
+      "name": "PlatformExists",
+      "msg": "The platform is already set up"
+    },
+    {
+      "code": 6011,
+      "name": "NoPlatform",
+      "msg": "The platform isn't set up yet"
+    },
+    {
+      "code": 6012,
+      "name": "InvalidPlatform",
+      "msg": "Not our LaunchLab platform config"
+    },
+    {
+      "code": 6013,
+      "name": "InvalidPool",
+      "msg": "Not this coin's pool"
+    },
+    {
+      "code": 6014,
+      "name": "InvalidLpLock",
+      "msg": "Not the locked LP of this coin's graduated pool"
+    },
+    {
+      "code": 6015,
+      "name": "ExceedsPending",
+      "msg": "More than the pending fees"
+    },
+    {
+      "code": 6016,
+      "name": "ExceedsPool",
+      "msg": "More than the pool holds"
+    },
+    {
+      "code": 6017,
+      "name": "NotUpgradeAuthority",
+      "msg": "Only the program's upgrade authority can set up Global"
+    },
+    {
+      "code": 6018,
+      "name": "FeeTierDisabled",
+      "msg": "This fee level isn't open for new launches"
+    },
+    {
+      "code": 6019,
+      "name": "NotPendingDistributor",
+      "msg": "Only the pending distributor can accept"
+    },
+    {
+      "code": 6020,
+      "name": "NotFlagshipCreator",
+      "msg": "The flagship must be launched by the distributor (the developer wallet)"
+    },
+    {
+      "code": 6021,
+      "name": "DevBalanceChanged",
+      "msg": "The developer wallet's own balance would change"
+    },
+    {
+      "code": 6022,
+      "name": "Overspent",
+      "msg": "The buy took more than it was given"
+    },
+    {
+      "code": 6023,
+      "name": "PayoutsPaused",
+      "msg": "Payouts are paused"
+    },
+    {
+      "code": 6024,
+      "name": "OutflowLimit",
+      "msg": "Over the pair's outflow limit for this window"
+    },
+    {
+      "code": 6025,
+      "name": "NotPendingPayout",
+      "msg": "Only the proposed payout wallet can accept"
+    },
+    {
+      "code": 6026,
+      "name": "InvalidTreasury",
+      "msg": "The treasury can't be the default address"
+    },
+    {
+      "code": 6027,
+      "name": "InvalidWindow",
+      "msg": "The outflow window must be at least a minute"
+    },
+    {
+      "code": 6028,
+      "name": "ConvertUnpaired",
+      "msg": "convert_begin and convert_end must be in the same transaction"
+    },
+    {
+      "code": 6029,
+      "name": "ConvertTooLittle",
+      "msg": "The swap returned less SOL than the minimum"
+    }
+  ],
+  "types": [
+    {
+      "name": "AddFeeTierArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "index",
+            "type": "u8"
+          },
+          {
+            "name": "fee_rate",
+            "docs": [
+              "Our fee on every curve trade, on LaunchLab's scale (1,000,000 = 100%), on top of Raydium's 0.25%:",
+              "7,500 / 12,500 / 17,500 / 22,500 make 1 / 1.5 / 2 / 2.5% in total."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "web",
+            "type": "string"
+          },
+          {
+            "name": "img",
+            "type": "string"
+          },
+          {
+            "name": "admin_lamports",
+            "docs": [
+              "SOL for the tier-admin PDA, which pays the platform config's rent."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "authority_lamports",
+            "docs": [
+              "SOL moved into the authority so it can pay rent for accounts LaunchLab creates for it (may be 0)."
+            ],
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AmmCreatorFeeOn",
+      "docs": [
+        "migrate to cpmm, creator fee on quote token or both token"
+      ],
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "QuoteToken"
+          },
+          {
+            "name": "BothToken"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConvertTicket",
+      "docs": [
+        "A conversion in flight: what convert_end checks the dev's balances against. Lives within one transaction."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pair",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "quote_before",
+            "docs": [
+              "The dev's pair-token and wrapped-SOL balances before the conversion."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "sol_before",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CreatorFeesWithdrawn",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "payout",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CreatorPaid",
+      "docs": [
+        "The distributor sent a coin's creator earnings to its payout wallet's token account (`pay_creator`)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "payout",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "pusher",
+            "docs": [
+              "The distributor that signed it."
+            ],
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CreatorVault",
+      "docs": [
+        "A coin's creator earnings and who they're paid to. The funds themselves sit with the authority."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "payout",
+            "docs": [
+              "Wallet that withdraws; starts as the launching creator."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "harvested",
+            "type": "u64"
+          },
+          {
+            "name": "withdrawn",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "pending_payout",
+            "docs": [
+              "A payout wallet proposed by the current one, which takes over when it signs `accept_payout_wallet`",
+              "(so a mistyped address can't receive the earnings); default when none is proposed."
+            ],
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DistributorChanged",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "previous",
+            "type": "pubkey"
+          },
+          {
+            "name": "distributor",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DistributorProposed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "proposed",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FeeSplit",
+      "docs": [
+        "Shares of our fees in basis points, adding up to 10,000 (`FeeSplit::DEFAULT` is ours). The admin can change",
+        "it any time with `update_global`."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "docs": [
+              "Credited to the coin's creator vault, claimable any time."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "holders",
+            "docs": [
+              "The coin's holder pool, paid out pro rata by the payout bot."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "flagship",
+            "docs": [
+              "Per pair token; buys and burns our flagship token."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "traders",
+            "docs": [
+              "Per pair token; airdropped to traders by volume by the payout bot."
+            ],
+            "type": "u16"
+          },
+          {
+            "name": "treasury",
+            "docs": [
+              "Per pair token; withdrawn by the admin to the treasury wallet only."
+            ],
+            "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FeeTier",
+      "docs": [
+        "A trading-fee level creators can pick at launch. Each is its own LaunchLab platform (LaunchLab charges one",
+        "fee rate per platform), all paying their fees and locked-LP fee NFTs to the same authority, so the books",
+        "and the split are the same at every level. A coin keeps its level for life: its curve trades pay its",
+        "platform's rate, and it graduates into a CPMM pool with the matching fee."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "index",
+            "type": "u8"
+          },
+          {
+            "name": "fee_rate",
+            "docs": [
+              "Our fee on LaunchLab's scale (1,000,000 = 100%), on top of Raydium's 0.25%: 7,500 makes 1% in total."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "platform_config",
+            "docs": [
+              "This level's LaunchLab platform config, owned by the tier-admin PDA."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "cpmm_config",
+            "docs": [
+              "The CPMM config its coins graduate into, with the matching pool fee (fixes their pool address)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "enabled",
+            "docs": [
+              "Gates new launches only; coins already on this level keep trading."
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "admin_bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FeesAttributed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "coin_fee",
+            "docs": [
+              "The platform fee the coin's trades paid."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "creator",
+            "type": "u64"
+          },
+          {
+            "name": "holders",
+            "type": "u64"
+          },
+          {
+            "name": "source_amount",
+            "docs": [
+              "The fees in the coin's pair token this covers (equal to coin_fee for SOL coins)."
+            ],
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FeesCollected",
+      "docs": [
+        "Fees collected and split. `mint` is default for pooled vault fees (their per-coin part is pending)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "source",
+            "type": "u8"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "creator",
+            "type": "u64"
+          },
+          {
+            "name": "holders",
+            "type": "u64"
+          },
+          {
+            "name": "pending",
+            "type": "u64"
+          },
+          {
+            "name": "flagship",
+            "type": "u64"
+          },
+          {
+            "name": "traders",
+            "type": "u64"
+          },
+          {
+            "name": "treasury",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FeesConverted",
+      "docs": [
+        "The payout bot swapped `spent` of a pair token's unconverted fees to `sol` lamports, booked like a SOL claim."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "spent",
+            "type": "u64"
+          },
+          {
+            "name": "sol",
+            "type": "u64"
+          },
+          {
+            "name": "pending",
+            "type": "u64"
+          },
+          {
+            "name": "flagship",
+            "type": "u64"
+          },
+          {
+            "name": "traders",
+            "type": "u64"
+          },
+          {
+            "name": "treasury",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FlagshipBought",
+      "docs": [
+        "The developer wallet (`buyer`: the distributor, which launched the flagship) bought the flagship with",
+        "`spent` of a pair's flagship pool and burned the `burned` tokens it got, in the same instruction."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "buyer",
+            "type": "pubkey"
+          },
+          {
+            "name": "spent",
+            "type": "u64"
+          },
+          {
+            "name": "burned",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FlagshipReleased",
+      "docs": [
+        "The admin moved `amount` of a pair's unspent flagship pool to its treasury (`release_flagship`)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FlagshipSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Global",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "pending_admin",
+            "docs": [
+              "Set by `propose_admin`, takes over on `accept_admin`."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "attestor",
+            "docs": [
+              "Backend key that co-signs launches after its off-chain checks."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "attestor_required",
+            "type": "bool"
+          },
+          {
+            "name": "treasury",
+            "docs": [
+              "Wallet (multisig) that treasury withdrawals go to."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "distributor",
+            "docs": [
+              "The payout bot, which is also the developer wallet that launched the flagship: the only signer that",
+              "can attribute pooled fees to coins, pay out the holder, trader and creator pools, and buy and burn",
+              "the flagship. It can't touch the treasury, and it can only pay creators to their own payout wallets.",
+              "Changed in two steps: `propose_distributor` (admin), then `accept_distributor` (the new key)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "split",
+            "docs": [
+              "How our share of every trade is divided."
+            ],
+            "type": {
+              "defined": {
+                "name": "FeeSplit"
+              }
+            }
+          },
+          {
+            "name": "legacy_platform_config",
+            "docs": [
+              "Unused since fee tiers replaced the single platform (each `FeeTier` has its own); kept so the",
+              "account layout doesn't change."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "pending_distributor",
+            "docs": [
+              "Set by `propose_distributor`, takes over on `accept_distributor`; default when none is proposed.",
+              "(This slot held the unused `legacy_cpmm_config` before, so the account layout is unchanged.)"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "flagship_mint",
+            "docs": [
+              "Our flagship token, bought and burned with the flagship pool; default until it exists. Set with",
+              "`set_flagship`, only to a coin launched through us by the distributor (or the proposed one)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "paused",
+            "docs": [
+              "Gates new launches only (the keeper also skips payouts while it is set)."
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "authority_bump",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "payouts_paused",
+            "docs": [
+              "The admin's emergency stop for the payout bot: while set, every distributor instruction (attribution,",
+              "release, holder, trader and creator payouts, flagship buys) is refused, so a leaked dev key can be frozen",
+              "with one admin transaction. Fee claims and creators' own withdrawals keep working."
+            ],
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GlobalConfig",
+      "docs": [
+        "Holds the current owner of the factory"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "type": "u64"
+          },
+          {
+            "name": "curve_type",
+            "type": "u8"
+          },
+          {
+            "name": "index",
+            "type": "u16"
+          },
+          {
+            "name": "migrate_fee",
+            "type": "u64"
+          },
+          {
+            "name": "trade_fee_rate",
+            "type": "u64"
+          },
+          {
+            "name": "max_share_fee_rate",
+            "type": "u64"
+          },
+          {
+            "name": "min_base_supply",
+            "type": "u64"
+          },
+          {
+            "name": "max_lock_rate",
+            "type": "u64"
+          },
+          {
+            "name": "min_base_sell_rate",
+            "type": "u64"
+          },
+          {
+            "name": "min_base_migrate_rate",
+            "type": "u64"
+          },
+          {
+            "name": "min_quote_fund_raising",
+            "type": "u64"
+          },
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "protocol_fee_owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "migrate_fee_owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "migrate_to_amm_wallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "migrate_to_cpswap_wallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "padding_alignment",
+            "type": {
+              "array": [
+                "u8",
+                8
+              ]
+            }
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u64",
+                15
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "GlobalUpdated",
+      "docs": [
+        "The settings after an `update_global` (every field, changed or not)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "attestor",
+            "type": "pubkey"
+          },
+          {
+            "name": "attestor_required",
+            "type": "bool"
+          },
+          {
+            "name": "treasury",
+            "type": "pubkey"
+          },
+          {
+            "name": "split",
+            "type": {
+              "defined": {
+                "name": "FeeSplit"
+              }
+            }
+          },
+          {
+            "name": "paused",
+            "type": "bool"
+          },
+          {
+            "name": "payouts_paused",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "HolderRewardPaid",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "InitGlobalArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "attestor",
+            "type": "pubkey"
+          },
+          {
+            "name": "attestor_required",
+            "type": "bool"
+          },
+          {
+            "name": "treasury",
+            "type": "pubkey"
+          },
+          {
+            "name": "distributor",
+            "type": "pubkey"
+          },
+          {
+            "name": "split",
+            "type": {
+              "defined": {
+                "name": "FeeSplit"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LaunchArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "uri",
+            "type": "string"
+          },
+          {
+            "name": "x_handle_hash",
+            "docs": [
+              "sha256 of the lowercased X handle, if the creator linked one. The attestor checked ownership."
+            ],
+            "type": {
+              "option": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "LaunchRecord",
+      "docs": [
+        "One coin launched through us."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_mint",
+            "docs": [
+              "The token this coin trades against."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "pool",
+            "docs": [
+              "LaunchLab pool (the bonding curve)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "launched_at",
+            "type": "i64"
+          },
+          {
+            "name": "fees",
+            "docs": [
+              "All our fees credited to this coin (attributed curve fees and LP fees), in the pair token."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "holders_in",
+            "docs": [
+              "The coin's holder pool."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "holders_out",
+            "type": "u64"
+          },
+          {
+            "name": "burned",
+            "docs": [
+              "Coin tokens burned from its LP fees after graduation."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "creator_vault_bump",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Launched",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "ticker",
+            "type": "string"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "pool",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LpTokensBurned",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OutflowLimitSet",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "cap",
+            "type": "u64"
+          },
+          {
+            "name": "window_secs",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Pair",
+      "docs": [
+        "A token coins can be paired with, and its books. All of a pair's funds sit in the authority's",
+        "token account for that token; these totals say whose they are."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_token_program",
+            "docs": [
+              "SPL Token or Token-2022, whichever owns `quote_mint`."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "launch_config",
+            "docs": [
+              "LaunchLab's global config for this quote token (curve type 0, index 0)."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "fund_raising",
+            "docs": [
+              "What a coin's curve must raise to graduate, in the pair token's base units."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "enabled",
+            "docs": [
+              "Gates new launches only; coins already paired keep working."
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "collected",
+            "docs": [
+              "All fees collected for this pair, from every source."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "pending",
+            "docs": [
+              "Per-coin shares (creator + holders) of curve fees, which arrive unlabelled in LaunchLab's pooled",
+              "fee vault, waiting for the payout bot to attribute them to coins."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "flagship_in",
+            "type": "u64"
+          },
+          {
+            "name": "flagship_out",
+            "type": "u64"
+          },
+          {
+            "name": "flagship_burned",
+            "docs": [
+              "Flagship tokens bought and burned with this pair's flagship pool."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "traders_in",
+            "type": "u64"
+          },
+          {
+            "name": "traders_out",
+            "type": "u64"
+          },
+          {
+            "name": "treasury_in",
+            "type": "u64"
+          },
+          {
+            "name": "treasury_out",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "pending_split",
+            "docs": [
+              "The split `pending` was booked under. Curve-fee claims keep using it while `pending` is non-zero and",
+              "take the current `global.split` once it is empty; attribution always uses it. So a split change never",
+              "re-divides fees that were already claimed (the keeper empties `pending` to let a new split take effect)."
+            ],
+            "type": {
+              "defined": {
+                "name": "FeeSplit"
+              }
+            }
+          },
+          {
+            "name": "outflow_cap",
+            "docs": [
+              "At most this much (pair base units) can leave the pair's pools at the payout bot's discretion per",
+              "window: creator credits from attribution, holder and trader payouts, and flagship buys. Bounds what a",
+              "leaked dev key can take before the admin pauses payouts or rotates it. 0 (a new pair's default)",
+              "allows nothing until the admin sets it with `set_outflow_limit`."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "outflow_window_secs",
+            "type": "u32"
+          },
+          {
+            "name": "outflow_window_start",
+            "type": "i64"
+          },
+          {
+            "name": "outflow_used",
+            "docs": [
+              "Used so far in the current window."
+            ],
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PayoutWalletChanged",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "previous",
+            "type": "pubkey"
+          },
+          {
+            "name": "payout",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PayoutWalletProposed",
+      "docs": [
+        "A coin's payout wallet proposed a new one, which takes over when it accepts (default: proposal cancelled)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "payout",
+            "type": "pubkey"
+          },
+          {
+            "name": "proposed",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PendingReleased",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PoolState",
+      "docs": [
+        "Represents the state of a trading pool in the protocol",
+        "Stores all essential information about pool balances, fees, and configuration"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "epoch",
+            "type": "u64"
+          },
+          {
+            "name": "auth_bump",
+            "type": "u8"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "base_decimals",
+            "type": "u8"
+          },
+          {
+            "name": "quote_decimals",
+            "type": "u8"
+          },
+          {
+            "name": "migrate_type",
+            "type": "u8"
+          },
+          {
+            "name": "supply",
+            "type": "u64"
+          },
+          {
+            "name": "total_base_sell",
+            "type": "u64"
+          },
+          {
+            "name": "virtual_base",
+            "type": "u64"
+          },
+          {
+            "name": "virtual_quote",
+            "type": "u64"
+          },
+          {
+            "name": "real_base",
+            "type": "u64"
+          },
+          {
+            "name": "real_quote",
+            "type": "u64"
+          },
+          {
+            "name": "total_quote_fund_raising",
+            "type": "u64"
+          },
+          {
+            "name": "quote_protocol_fee",
+            "type": "u64"
+          },
+          {
+            "name": "platform_fee",
+            "type": "u64"
+          },
+          {
+            "name": "migrate_fee",
+            "type": "u64"
+          },
+          {
+            "name": "vesting_schedule",
+            "type": {
+              "defined": {
+                "name": "VestingSchedule"
+              }
+            }
+          },
+          {
+            "name": "global_config",
+            "type": "pubkey"
+          },
+          {
+            "name": "platform_config",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "quote_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "token_program_flag",
+            "type": "u8"
+          },
+          {
+            "name": "amm_creator_fee_on",
+            "type": {
+              "defined": {
+                "name": "AmmCreatorFeeOn"
+              }
+            }
+          },
+          {
+            "name": "platform_vesting_share",
+            "type": "u64"
+          },
+          {
+            "name": "padding",
+            "type": {
+              "array": [
+                "u8",
+                54
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TraderRewardPaid",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "quote_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpdateGlobalArgs",
+      "docs": [
+        "Every field is optional; `None` leaves it unchanged. The distributor and the flagship have their own",
+        "instructions (`propose_distributor` / `accept_distributor`, `set_flagship`)."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "attestor",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "attestor_required",
+            "type": {
+              "option": "bool"
+            }
+          },
+          {
+            "name": "treasury",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "split",
+            "type": {
+              "option": {
+                "defined": {
+                  "name": "FeeSplit"
+                }
+              }
+            }
+          },
+          {
+            "name": "paused",
+            "type": {
+              "option": "bool"
+            }
+          },
+          {
+            "name": "payouts_paused",
+            "docs": [
+              "The payout bot's emergency stop (see `Global::payouts_paused`)."
+            ],
+            "type": {
+              "option": "bool"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "VestingSchedule",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "total_locked_amount",
+            "type": "u64"
+          },
+          {
+            "name": "cliff_period",
+            "type": "u64"
+          },
+          {
+            "name": "unlock_period",
+            "type": "u64"
+          },
+          {
+            "name": "start_time",
+            "type": "u64"
+          },
+          {
+            "name": "allocated_share_amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "XRecord",
+      "docs": [
+        "One coin per X account, keyed by sha256 of the lowercased handle."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}

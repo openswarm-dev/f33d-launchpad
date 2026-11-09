@@ -1,0 +1,16 @@
+[toolchain]
+anchor_version = "1.0.2"
+solana_version = "3.1.10"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+launchpad = "4CQamM8uVrGmQ8non8jEgq32topQK1cMyR2VDBf6rnLB"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[hooks]
